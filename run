@@ -1,0 +1,17 @@
+#! /Users/invinzeng/.rvm/rubies/ruby-1.9.3-p194/bin/ruby
+TI_IOS = ENV['TI_IOS']
+TI_AND = ENV['TI_AND']
+
+if ARGV.first=='ios'
+    require 'xmlsimple'
+    config = XmlSimple.xml_in('tiapp.xml')
+    CWD = Dir.pwd
+    APPID = config['id'][0]
+    APPNAME = config['name'][0]
+
+    exec "#{TI_IOS} simulator 5.1 #{CWD} #{APPID} #{APPNAME}" 
+elsif ARGV.first=='emu'
+    exec "/Users/invinzeng/Downloads/android-sdk-macosx/tools/emulator -avd WVGA800_D240"
+else
+    exec "#{TI_AND} run --platform=android --android=/Users/invinzeng/Downloads/android-sdk-macosx/"
+end
