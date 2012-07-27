@@ -3,3 +3,9 @@ bin
 build
 *.zip
 .apt_generated
+.settings
+dist
+documentation
+.project
+logcat
+run
